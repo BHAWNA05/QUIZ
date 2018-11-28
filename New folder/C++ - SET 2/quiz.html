@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Round1</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="quiz.css">
+	<script >
+addEventListener("click", function() {
+    var el = document.documentElement,
+     rfs =  el.requestFullScreen
+          || el.webkitRequestFullScreen
+            || el.mozRequestFullScreen;
+    rfs.call(el);
+});
+		var c = 1;
+var t;
+var timer_is_on = 0;
+
+function timedCount() {
+    document.getElementById("txt").value = c;
+    c = c + 1;
+    if(c==10)
+    {
+    	clearTimeout(t);
+    timer_is_on = 0;
+    	showScores();
+    	stopCount();
+    }
+    
+    t = setTimeout(function(){timedCount()}, 1000);
+};
+addEventListener("click" ,
+
+function startCount() {
+    if (!timer_is_on) {
+        timer_is_on = 1;
+        timedCount();
+    }
+});
+
+
+	</script>
+</head>
+<body >
+
+	<div class="grid"  >
+		
+<input type="text" id="txt" readonly>
+
+		<div id="quiz">
+			
+			<h1>ONSTREAM UNTANGLE</h1>
+			<hr style="margin-bottom: 20px">
+			<div id="question"></div>
+		<div class="buttons">
+				<button id="btn0"><span id="choice0"></span></button>
+				<button id="btn1"><span id="choice1"></span></button>
+				<button id="btn2"><span id="choice2"></span></button>
+				<button id="btn3"><span id="choice3"></span></button>
+			</div>
+			<hr style="margin-top: 50px;">
+			<footer>
+				<p id="progress" > question x of y </p>
+			</footer>
+		</div>
+	</div>
+<script src="hudu.js">
+	$(document).bind("contextmenu",function(e) {
+ e.preventDefault();
+});
+</script>
+	<script type="text/javascript" src="app.js"></script>
+	<script type="text/javascript" src="try.js"></script>
+</body>
+</html>
